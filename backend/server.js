@@ -6,7 +6,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: 'https://panto-one.vercel.app', credentials: true }));
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -19,7 +19,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: 'http://localhost:5005/auth/github/callback',
+      callbackURL: 'https://panto.onrender.com/auth/github/callback',
     },
     (accessToken, refreshToken, profile, done) => {
       profile.accessToken = accessToken;
@@ -34,7 +34,7 @@ app.get(
   '/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('http://localhost:5173/repos');
+    res.redirect('https://panto-one.vercel.app/repos');
   }
 );
 
@@ -53,4 +53,4 @@ app.get('/repos', (req, res) => {
     .catch((error) => res.status(500).json({ error: error.message }));
 });
 
-app.listen(5005, () => console.log('Server running on http://localhost:5005'));
+app.listen(5005, () => console.log('Server running on https://panto.onrender.com'));

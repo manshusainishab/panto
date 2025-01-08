@@ -15,7 +15,7 @@ const App = () => (
 const Login = () => (
   <div style={{ textAlign: 'center', marginTop: '50px' }}>
     <h1>Login with GitHub</h1>
-    <a href="http://localhost:5005/auth/github">
+    <a href="https://panto.onrender.com/auth/github">
       <button>Login</button>
     </a>
   </div>

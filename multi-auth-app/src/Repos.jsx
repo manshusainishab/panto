@@ -7,7 +7,7 @@ const Repos = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5005/repos', { withCredentials: true })
+      .get('https://panto.onrender.com/repos', { withCredentials: true })
       .then((response) => setRepos(response.data))
       .catch((error) => setError(error.message));
   }, []);
