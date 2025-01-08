@@ -38,7 +38,8 @@ app.get(
   }
 );
 
-app.get('/repos', (req, res) => {
+app.get('/repos', async (req, res) => {
+  setTimeout(()=>{
   if (!req.user) {
     return res.status(401).json({ error: 'Not authenticated' });
   }
@@ -51,6 +52,7 @@ app.get('/repos', (req, res) => {
     })
     .then((response) => res.json(response.data))
     .catch((error) => res.status(500).json({ error: error.message }));
-});
+}
+,1000)});
 
 app.listen(5005, () => console.log('Server running on https://panto.onrender.com'));
