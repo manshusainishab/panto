@@ -12,7 +12,7 @@ const Repos = () => {
       .catch((error) => setError(error.message));
   }, []);
 
-  if (error) return <p>Error: {error}</p>;
+  // if (error) return <p>Error: {error}</p>;
 
   return (
     <div style={{ padding: '20px' }}>
